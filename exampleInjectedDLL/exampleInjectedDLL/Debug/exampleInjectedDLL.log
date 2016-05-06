@@ -1,0 +1,4 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  exampleInjectedDLL.cpp
+  exampleInjectedDLL.vcxproj -> E:\Projects\exampleInjectedDLL\Debug\exampleInjectedDLL.dll
