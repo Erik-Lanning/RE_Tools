@@ -17,7 +17,7 @@ namespace retool
 			// Form the search value.
 			char needle[sizeof(int) + 1];
 			int value = 0xDEADBEEF;
-			snprintf(needle,sizeof(int),"%s",(char*)&value);
+			snprintf(needle, sizeof(int), "%s",(char*) &value);
 			needle[sizeof(int)] = '\0';
 
 			std::string processName = "injectorTestExe.exe";
@@ -40,6 +40,5 @@ namespace retool
 			std::vector<DWORD> matchIndexes = scanner::locateMatches(regex, exampleBuffer);
 			assert(matchIndexes.size() == expectedMatches);
 		}
-	private:
 	};
 }

@@ -9,15 +9,17 @@ namespace retool
 	{
 		HANDLE hsnap;
 		PROCESSENTRY32 pt;
-		hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
+		hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 		pt.dwSize = sizeof(PROCESSENTRY32);
-		do {
-			if (pt.szExeFile == processName){
+		do 
+		{
+			if (pt.szExeFile == processName)
+			{
 				DWORD pid = pt.th32ProcessID;
 				CloseHandle(hsnap);
 				return pid;
 			}
-		} while (Process32Next(hsnap,&pt));
+		} while (Process32Next(hsnap, &pt));
 		CloseHandle(hsnap);
 		return 0;
 	}

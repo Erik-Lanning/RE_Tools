@@ -11,7 +11,7 @@ namespace retool
 	scanner::scanner(std::string processName)
 	{
 		DWORD pid = getPid(processName);
-		process_ = OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid);
+		process_ = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
 	}
 
 	scanner::~scanner()
@@ -27,17 +27,17 @@ namespace retool
 		MEMORY_BASIC_INFORMATION processInfo;
 		DWORD bytesRead;
 
-		while (VirtualQueryEx(process_, baseAddress, &processInfo,  sizeof(processInfo)))
+		while (VirtualQueryEx(process_, baseAddress, &processInfo, sizeof(processInfo)))
 		{	
 			if (isAllocatedMemory(&processInfo))
 			{
 				readBuffer.resize(processInfo.RegionSize);
-				ReadProcessMemory(process_,baseAddress,&readBuffer[0],processInfo.RegionSize,&bytesRead);
+				ReadProcessMemory(process_,baseAddress, &readBuffer[0], processInfo.RegionSize, &bytesRead);
 				readBuffer.resize(bytesRead);
 				if (readBuffer.size() > 0)
 				{
-					std::vector<DWORD> foundBlockAddresses = locateMatches(searchValue,readBuffer,baseAddress);
-					valueAddresses.insert(valueAddresses.end(),foundBlockAddresses.begin(),foundBlockAddresses.end());
+					std::vector<DWORD> foundBlockAddresses = locateMatches(searchValue, readBuffer, baseAddress);
+					valueAddresses.insert(valueAddresses.end(), foundBlockAddresses.begin(), foundBlockAddresses.end());
 				}
 			}
 			baseAddress += processInfo.RegionSize;
@@ -53,16 +53,16 @@ namespace retool
 
 	//@pre buffer.size() > 0.
 	//@post vector of memory addresses returned.
-	std::vector<DWORD> scanner::locateMatches(std::string regex,std::vector<char> buffer,const unsigned char *base)
+	std::vector<DWORD> scanner::locateMatches(std::string regex, std::vector<char> buffer, const unsigned char *base)
 	{
 		std::vector<DWORD> matchAddresses;
 		std::regex pattern(regex);
 
-		for (auto it = std::cregex_iterator(&buffer.front(),&buffer.back(),pattern);
+		for (auto it = std::cregex_iterator(&buffer.front(), &buffer.back(), pattern);
 			it != std::cregex_iterator();
 			++it)
 		{
-			matchAddresses.push_back((DWORD)base + it->position());
+			matchAddresses.push_back((DWORD) base + it->position());
 		}
 		return matchAddresses;
 	}

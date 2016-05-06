@@ -11,8 +11,8 @@ namespace retool
 {
 	class scanner
 	{
-	public:
 		friend class scannerTest;
+	public:
 		scanner(std::string processName);
 		virtual ~scanner();
 		std::vector<DWORD> findValue(const std::string searchValue);
@@ -21,6 +21,6 @@ namespace retool
 		HANDLE process_;
 
 		bool isAllocatedMemory(const PMEMORY_BASIC_INFORMATION memoryRegion);
-		static std::vector<DWORD> locateMatches(std::string regex,std::vector<char> buffer,const unsigned char *base = 0);
+		static std::vector<DWORD> locateMatches(std::string regex, std::vector<char> buffer, const unsigned char *base = 0);
 	};
 }

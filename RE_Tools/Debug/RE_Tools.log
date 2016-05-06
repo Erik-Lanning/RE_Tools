@@ -1,3 +1,10 @@
-﻿  scanner.cpp
+﻿  scannerTest.h
+  scanner.cpp
+  main.cpp
+  injectorTest.h
+  injector.cpp
+  globalFunctionsTest.cpp
+  globalFunctions.cpp
+  Generating Code...
   RE_Tools.vcxproj -> E:\Projects\RE_Tools\Debug\RE_Tools.exe
   RE_Tools.vcxproj -> E:\Projects\RE_Tools\Debug\RE_Tools.pdb (Full PDB)

@@ -5,8 +5,8 @@ namespace retool
 {
 	DWORD getPid(std::string processName);
 
-	template<typename T,typename... NextVar>
-	static bool containsNullVariable(T t,NextVar... args)
+	template<typename T, typename... NextVar>
+	static bool containsNullVariable(T t, NextVar... args)
 	{
 		if (t == NULL)
 			return true;

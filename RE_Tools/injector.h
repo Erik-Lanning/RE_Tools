@@ -11,9 +11,9 @@ namespace retool
 	{
 		friend class injectorTest;
 	public:
-		injector(std::string processName,std::string dllLocation);
+		injector(std::string processName, std::string dllLocation);
 		virtual ~injector() = default;
-		void injectDll(std::string processName,std::string dllLocation);
+		void injectDll(std::string processName, std::string dllLocation);
 		
 		bool isInjected()
 		{
