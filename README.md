@@ -1,8 +1,8 @@
 # RE_Tools
 This is an incredibly basic set of classes to operate on processes.
-Currently it support injecting a DLL into a process, or searching a process for a value.
+Currently it supports injecting a DLL into a process, or searching a process for a value.
 
-Here are some examples:
+Here are some examples
 
 ```
 // Search the process named "injectorTestExe.exe" for the value 0xDEADBEEF and return the offset.
