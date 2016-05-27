@@ -20,6 +20,7 @@ std::vector<DWORD> offsets = testScanner.findValue(needle);
 std::string processName = "injectorTestExe.exe";
 std::string dllPath = "C:\\exampleInjectedDLL.dll";
 injector exampleInjector(processName, dllPath);
+```
 
 As you can see these classes make the task incredibly trivial to users.
-```
+
